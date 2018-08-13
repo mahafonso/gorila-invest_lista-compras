@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>AppListaCompras</title>
+  <title>Lista de Compras</title>
   <base href="/">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -10,5 +10,19 @@
 </head>
 <body>
   <app-root></app-root>
+
+  <script src="https://www.gstatic.com/firebasejs/5.3.1/firebase.js"></script>
+  <script>
+    // Initialize Firebase
+    var config = {
+      apiKey: "AIzaSyAxG2mcpr6G74vdREk4LuBTE4WBzzt-B9w",
+      authDomain: "gorilainvestlistacompras.firebaseapp.com",
+      databaseURL: "https://gorilainvestlistacompras.firebaseio.com",
+      projectId: "gorilainvestlistacompras",
+      storageBucket: "",
+      messagingSenderId: "508956130445"
+    };
+    firebase.initializeApp(config);
+  </script>
 </body>
 </html>

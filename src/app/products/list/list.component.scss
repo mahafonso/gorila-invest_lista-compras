@@ -1,0 +1,28 @@
+.name,
+.quantity {
+	margin-right: 20px;
+	padding-right: 10px;
+	width: 100px;
+}
+
+.remove-product {
+	// @include singleTransition(300);
+	background: #181818;
+	border: 1px solid #181818;
+	border-radius: 5px;
+	color: #fff;
+	font-size: 13px;
+	outline: none;
+	padding: 8px 16px;
+
+	&:not([disabled]) {
+		cursor: pointer;
+
+		&:hover {
+				background: transparent;
+				color: #181818;
+		}
+	}
+
+	&[disabled] { opacity: 0.8; }
+}

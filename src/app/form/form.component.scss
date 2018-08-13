@@ -1,0 +1,55 @@
+#form-new-product {
+  border-bottom: 1px solid #181818;
+  font-size: 14px;
+  margin-bottom: 30px;
+  padding-bottom: 30px;
+
+	.form-group { margin: 15px 0; }
+
+	.label {
+		display: inline-block;
+		width: 90px;
+	}
+
+	.input {
+		border: 1px solid #181818;
+		border-radius: 5px;
+		outline: none;
+    padding: 5px;
+    width: 180px;
+	}
+
+  input[type=number]::-webkit-inner-spin-button { opacity: 1; }
+
+  .error-msg {
+    background: #f2dede;
+    border: 1px solid #f0d8d9;
+    border-radius: 5px;
+    color: #bf7271;
+    font-size: 12px;
+    margin-left: 90px;
+    padding: 5px;
+    width: 180px;
+  }
+
+	.button {
+		// @include singleTransition(300);
+		background: #181818;
+		border: 1px solid #181818;
+		border-radius: 5px;
+		color: #fff;
+		outline: none;
+    padding: 8px 16px;
+
+    &:not([disabled]) {
+      cursor: pointer;
+
+      &:hover {
+          background: transparent;
+          color: #181818;
+      }
+    }
+
+    &[disabled] { opacity: 0.8; }
+	}
+}

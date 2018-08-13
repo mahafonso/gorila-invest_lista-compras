@@ -1,0 +1,20 @@
+<form id="form-new-product" #newForm="ngForm" (ngSubmit)="onSubmit(product)">
+  <div class="form-group">
+    <label for="name" class="label">Produto:</label>
+    <input type="text" id="name" name="name" required class="input" [(ngModel)]="product.name" #name="ngModel">
+
+    <div class="error-msg" [hidden]="name.valid || name.pristine || submitted">Digite um nome</div>
+  </div>
+
+  <div class="form-group">
+    <label for="quantity" class="label">Quantidade:</label>
+    <input type="number" id="quantity" name="quantity" required class="input" [(ngModel)]="product.quantity" #quantity="ngModel">
+
+    <div class="error-msg" [hidden]="quantity.valid || quantity.pristine || submitted">Digite uma quantidade</div>
+  </div>
+
+  <button name="submit" type="submit" class="button" [disabled]="!newForm.form.valid">Enviar</button>
+</form>
+
+<span class="name">{{product.name}}</span>
+<span class="quantity">{{product.quantity}}</span>
