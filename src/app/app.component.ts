@@ -5,4 +5,13 @@ import { Component } from '@angular/core';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {}
+
+export class AppComponent {
+  onSubmitRegister(email, password) {
+    console.log('register');
+  }
+
+  onSubmitLogin(email, password) {
+    console.log('login');
+  }
+}

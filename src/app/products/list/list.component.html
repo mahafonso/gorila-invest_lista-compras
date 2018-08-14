@@ -1,5 +1,10 @@
 <ul class="list-products">
-  <app-product *ngFor="let product of listProducts">
+  <li class="title">
+    <span class="name">Produto</span>
+    <span class="quantity">Quantidade</span>
+    <span class="remove-product">Remover</span>
+  </li>
+  <app-product *ngFor="let product of products">
     <span class="name">{{product.name}}</span>
     <span class="quantity">{{product.quantity}}</span>
     <span class="remove-product" (click)="removeProduct(product.id)">Remover</span>

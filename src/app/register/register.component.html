@@ -1,0 +1,24 @@
+<form id="form-register" #registerForm="ngForm" (ngSubmit)="onSubmitRegister(registerForm.value)">
+  <span class="title">Para se cadastrar, digite seu e-mail e uma senha</span>
+
+  <div class="form-group">
+    <label for="email" class="label">E-mail:</label>
+    <input type="text" id="email" name="email" required class="input" [(ngModel)]="emailText" #email="ngModel">
+
+    <div class="error-msg" [hidden]="email.valid || email.pristine || submitted">Digite um e-mail</div>
+  </div>
+
+  <div class="form-group">
+    <label for="password" class="label">Senha:</label>
+    <input type="password" id="password" name="password" required class="input" [(ngModel)]="passwordText"
+      #password="ngModel">
+
+    <div class="error-msg" [hidden]="password.valid || password.pristine || submitted">Digite a senha</div>
+  </div>
+
+  <button name="submit" type="submit" class="button" [disabled]="!registerForm.form.valid">Cadastrar</button>
+
+  <span class="link-login">Se você já tem cadastro, entre
+    <a [routerLink]="['/login']" title="Cadastre-se aqui">aqui</a>
+  </span>
+</form>

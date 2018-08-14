@@ -1,4 +1,4 @@
-<form id="form-new-product" #newForm="ngForm" (ngSubmit)="onSubmit(product)">
+<form id="form-new-product" #newForm="ngForm" (ngSubmit)="addProduct($event)">
   <div class="form-group">
     <label for="name" class="label">Produto:</label>
     <input type="text" id="name" name="name" required class="input" [(ngModel)]="product.name" #name="ngModel">
@@ -15,6 +15,3 @@
 
   <button name="submit" type="submit" class="button" [disabled]="!newForm.form.valid">Enviar</button>
 </form>
-
-<span class="name">{{product.name}}</span>
-<span class="quantity">{{product.quantity}}</span>

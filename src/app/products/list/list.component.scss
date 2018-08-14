@@ -1,9 +1,26 @@
-.name,
-.quantity {
-	margin-right: 20px;
-	padding-right: 10px;
-	width: 100px;
+.list-products {
+  margin: 0 auto;
+  margin-top: 20px;
+  width: 960px;
 }
+
+.title {
+  align-items: center;
+  display: flex;
+  flex-wrap: nowrap;
+  font-size: 14px;
+  font-weight: bold;
+  justify-content: space-between;
+  text-transform: uppercase;
+
+  .remove-product {
+    opacity: 0;
+    width: 20%;
+  }
+}
+
+.name,
+.quantity { width: 50%; }
 
 .remove-product {
 	// @include singleTransition(300);
@@ -13,7 +30,7 @@
 	color: #fff;
 	font-size: 13px;
 	outline: none;
-	padding: 8px 16px;
+  padding: 8px 16px;
 
 	&:not([disabled]) {
 		cursor: pointer;

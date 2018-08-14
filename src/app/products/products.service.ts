@@ -1,29 +1,20 @@
 import { Injectable } from '@angular/core';
-import { Observable } from '../../../node_modules/rxjs';
-import { AngularFirestore } from '../../../node_modules/angularfire2/firestore';
+import { Observable } from 'rxjs';
+import { AngularFirestore } from 'angularfire2/firestore';
 
 @Injectable()
 export class ProductsService {
-  products: Observable<any[]>;
-  db: AngularFirestore;
-
-  constructor(db: AngularFirestore) {
-    this.db = db;
-  }
+  constructor(public db: AngularFirestore) {}
 
   listProducts() {
-    this.products = this.db.collection('/products').valueChanges();
-
-    return this.products;
+    return this.db.collection('/products');
   }
 
   addProduct(product) {
-    console.log('product', product);
-
-    // adiciona produto no banco
+    return this.db.collection('/products').doc(this.db.createId()).set({name: product.name, quantity: product.quantity});
   }
 
   removeProduct(id) {
-    // remove produto do banco
+    return this.db.doc('/products/' + id).delete();
   }
 }

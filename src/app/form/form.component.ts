@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
 
 import { ProductComponent } from '../products/product/product.component';
 import { ProductsService } from '../products/products.service';
@@ -13,13 +12,16 @@ import { ProductsService } from '../products/products.service';
 export class FormComponent {
   submitted = false;
   product: ProductComponent = new ProductComponent();
-  serviceProduct: ProductsService;
 
-  onSubmit(product) {
+  constructor(public serviceProduct: ProductsService) {}
+
+  addProduct(event) {
+    event.preventDefault();
+
     this.submitted = true;
 
-    this.serviceProduct.addProduct(product);
-
-    this.product = new ProductComponent();
+    this.serviceProduct.addProduct(this.product).then(() => {
+      this.product = new ProductComponent();
+    });
   }
 }

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+
 import { ProductsService } from '../products.service';
 import { ProductComponent } from '../product/product.component';
 
@@ -9,23 +10,30 @@ import { ProductComponent } from '../product/product.component';
 })
 
 export class ListComponent {
-  serviceProduct: ProductsService;
-  listProducts: ProductComponent[];
-  isOk = false;
+  productsTemp = [];
+  products = [];
 
-  constructor(serviceProduct: ProductsService) {
-    this.serviceProduct = serviceProduct;
+  constructor(public serviceProduct: ProductsService) {
+    this.listProducts();
+  }
 
-    this.serviceProduct.listProducts().subscribe(data => {
-      this.listProducts = data;
+  listProducts() {
+    this.serviceProduct.listProducts().valueChanges().subscribe(data => {
+      this.productsTemp = data;
 
-      this.isOk = true;
+      this.serviceProduct.listProducts().snapshotChanges().subscribe(dataId => {
+        dataId.map((item, index) => {
+          this.productsTemp[index].id = item.payload.doc.id;
+        });
 
-      console.log('listProducts', this.listProducts);
+        this.products = this.productsTemp;
+      });
     });
   }
 
   removeProduct(id) {
-    this.serviceProduct.removeProduct(id);
+    this.serviceProduct.removeProduct(id).then(() => {
+      this.listProducts();
+    });
   }
 }

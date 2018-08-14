@@ -1,6 +1,9 @@
 .product-item {
   align-items: center;
+  border-bottom: 1px dashed #181818;
   display: flex;
   flex-wrap: nowrap;
-  margin: 10px 0;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  padding-bottom: 10px;
 }
