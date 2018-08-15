@@ -1,22 +1,21 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from 'angularfire2/firestore';
-import { AngularFireAuth } from 'angularfire2/auth';
 
 @Injectable()
 export class ProductsService {
-  currentUserId;
+  // currentUserId;
 
-  constructor(public fireAuth: AngularFireAuth, public db: AngularFirestore) {
-    this.currentUserId = localStorage.getItem('currentUserId');
+  constructor(private db: AngularFirestore) {
+    // this.currentUserId = localStorage.getItem('currentUserId');
   }
 
   listProducts() {
-    return this.db.collection('/products', ref => ref.where('userId', '==', this.currentUserId));
+    return this.db.collection('/products', ref => ref.where('userId', '==', localStorage.getItem('currentUserId')));
   }
 
   addProduct(product) {
     return this.db.collection('/products').doc(this.db.createId()).set(
-      { name: product.name, quantity: product.quantity, userId: this.currentUserId});
+      { name: product.name, quantity: product.quantity, userId: localStorage.getItem('currentUserId')});
   }
 
   removeProduct(id) {

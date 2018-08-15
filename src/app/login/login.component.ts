@@ -6,7 +6,10 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-form-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  styleUrls: [
+    './login.component.scss',
+    '../form/form.component.scss'
+  ]
 })
 
 export class LoginComponent {
@@ -22,7 +25,7 @@ export class LoginComponent {
 
         this.authenticationError = false;
 
-        this.router.navigate(['list']);
+        this.router.navigate(['/list']);
       }).catch(error => {
         this.authenticationError = true;
 

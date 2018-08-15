@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 
+import { ProductComponent } from '../product/product.component';
 import { ProductsService } from '../products.service';
 
 @Component({
@@ -9,20 +10,19 @@ import { ProductsService } from '../products.service';
 })
 
 export class ListComponent {
+  products: ProductComponent[] = [];
   productsTemp = [];
-  products = [];
   productsIdRemove = [];
   emptyList = true;
 
-  constructor(public serviceProduct: ProductsService) {
+  constructor(private serviceProduct: ProductsService) {
     this.listProducts();
   }
 
-  clickItem(id) {
-    this.productsIdRemove.push(id);
-  }
-
   listProducts() {
+    this.products = [];
+    this.productsTemp = [];
+
     this.serviceProduct.listProducts().valueChanges().subscribe(data => {
       if (data.length > 0) {
         this.emptyList = false;
@@ -58,5 +58,9 @@ export class ListComponent {
     this.products.forEach(item => {
       this.removeProduct(item.id);
     });
+  }
+
+  clickItem(id) {
+    this.productsIdRemove.push(id);
   }
 }

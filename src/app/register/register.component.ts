@@ -6,7 +6,10 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-form-register',
   templateUrl: './register.component.html',
-  styleUrls: ['./register.component.scss']
+  styleUrls: [
+    './register.component.scss',
+    '../form/form.component.scss'
+  ]
 })
 
 export class RegisterComponent {
@@ -22,7 +25,7 @@ export class RegisterComponent {
 
         this.authenticationError = false;
 
-        this.router.navigate(['list']);
+        this.router.navigate(['/list']);
       }).catch(error => {
         this.authenticationError = true;
 

@@ -1,4 +1,4 @@
-<form id="form-new-product" #newForm="ngForm" (ngSubmit)="addProduct($event)">
+<form id="form-new-product" class="form" #newForm="ngForm" (ngSubmit)="addProduct($event)">
   <div class="form-group">
     <label for="name" class="label">Produto:</label>
     <input type="text" id="name" name="name" required class="input" [(ngModel)]="product.name" #name="ngModel">
