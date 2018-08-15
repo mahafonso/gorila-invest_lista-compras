@@ -1,9 +1,13 @@
+@import '../../../scss/helpers/config.scss';
+@import '../../../scss/helpers/mixins.scss';
+
 .product-item {
   align-items: center;
-  border-bottom: 1px dashed #181818;
+  border-bottom: 1px dashed $base-color;
   display: flex;
   flex-wrap: nowrap;
   justify-content: space-between;
   margin-bottom: 10px;
   padding-bottom: 10px;
+  position: relative;
 }

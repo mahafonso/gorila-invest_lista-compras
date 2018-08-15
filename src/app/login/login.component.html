@@ -15,7 +15,9 @@
     <div class="error-msg" [hidden]="password.valid || password.pristine || submitted">Digite a senha</div>
   </div>
 
-  <button name="submit" type="submit" class="button" [disabled]="!loginForm.form.valid">Entrar</button>
+  <div class="error-msg error-msg-authentication" [hidden]="!authenticationError">{{errorMessage}}</div>
+
+  <app-button name="submit" text="Entrar" type="submit" [disabled]="!loginForm.form.valid"></app-button>
 
   <span class="link-register">Se você ainda não tem cadastro, cadastre-se <a [routerLink]="['/register']" title="Cadastre-se aqui">aqui</a></span>
 </form>

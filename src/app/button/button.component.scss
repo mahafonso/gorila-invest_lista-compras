@@ -1,0 +1,24 @@
+@import '../../scss/helpers/config.scss';
+@import '../../scss/helpers/mixins.scss';
+
+.btn {
+  @include singleTransition(300);
+	background: $base-color;
+	border: 1px solid $base-color;
+	border-radius: 5px;
+	color: #fff;
+	font-size: 13px;
+	outline: none;
+  padding: 8px 16px;
+
+	&:not([disabled]) {
+		cursor: pointer;
+
+		&:hover {
+				background: transparent;
+				color: $base-color;
+		}
+	}
+
+	&[disabled] { opacity: 0.8; }
+}

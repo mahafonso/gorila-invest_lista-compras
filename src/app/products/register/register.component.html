@@ -13,5 +13,5 @@
     <div class="error-msg" [hidden]="quantity.valid || quantity.pristine || submitted">Digite uma quantidade</div>
   </div>
 
-  <button name="submit" type="submit" class="button" [disabled]="!newForm.form.valid">Enviar</button>
+  <app-button text="Enviar" type="submit" [disabled]="!newForm.form.valid"></app-button>
 </form>

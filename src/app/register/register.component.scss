@@ -1,5 +1,8 @@
+@import '../../scss/helpers/config.scss';
+@import '../../scss/helpers/mixins.scss';
+
 #form-register {
-  border-bottom: 1px solid #181818;
+  border-bottom: 1px solid $base-color;
   font-size: 14px;
   margin-bottom: 30px;
   margin: 0 auto;
@@ -14,7 +17,7 @@
 	}
 
 	.input {
-		border: 1px solid #181818;
+		border: 1px solid $base-color;
 		border-radius: 5px;
 		outline: none;
     padding: 5px;
@@ -34,25 +37,10 @@
     width: 180px;
   }
 
-	.button {
-		// @include singleTransition(300);
-		background: #181818;
-		border: 1px solid #181818;
-		border-radius: 5px;
-		color: #fff;
-		outline: none;
-    padding: 8px 16px;
-
-    &:not([disabled]) {
-      cursor: pointer;
-
-      &:hover {
-          background: transparent;
-          color: #181818;
-      }
-    }
-
-    &[disabled] { opacity: 0.8; }
+  .error-msg-authentication {
+    margin-bottom: 15px;
+    margin-left: 0;
+    width: 270px;
   }
 
   .link-login {

@@ -1,35 +1,23 @@
 import { Injectable } from '@angular/core';
 import { Resolve, ActivatedRouteSnapshot, Router } from '@angular/router';
-import { UserService } from '../core/user.service';
-import { FirebaseUserModel } from '../core/user.model';
+import { AngularFireAuth } from 'angularfire2/auth';
 
 @Injectable()
-export class UserResolver implements Resolve<FirebaseUserModel> {
+export class UserResolver implements Resolve<any> {
 
-  constructor(public userService: UserService, private router: Router) { }
+  constructor(public fireAuth: AngularFireAuth, private router: Router) { }
 
-  resolve(route: ActivatedRouteSnapshot): Promise<FirebaseUserModel> {
-
-    const user = new FirebaseUserModel();
+  resolve(route: ActivatedRouteSnapshot): Promise<any> {
 
     return new Promise((resolve, reject) => {
-      this.userService.getCurrentUser()
-        .then(res => {
-          if (res.providerData[0].providerId === 'password') {
-            user.image = 'http://dsi-vd.github.io/patternlab-vd/images/fpo_avatar.png';
-            user.name = res.displayName;
-            user.provider = res.providerData[0].providerId;
-            return resolve(user);
-          } else {
-            user.image = res.photoURL;
-            user.name = res.displayName;
-            user.provider = res.providerData[0].providerId;
-            return resolve(user);
-          }
-        }, err => {
-          this.router.navigate(['/login']);
-          return reject(err);
-        });
+      this.fireAuth.auth.onAuthStateChanged(user => {
+        if (user) {
+          resolve(user);
+        } else {
+          this.router.navigate(['login']);
+          reject('No user logged in');
+        }
+      });
     });
   }
 }

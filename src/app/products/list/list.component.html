@@ -1,12 +1,25 @@
-<ul class="list-products">
+<span class="empty-list" [hidden]="!emptyList">Você ainda não tem produtos adicionados a sua lista de compras. Para adicionar, preencha o formulário acima.</span>
+
+<ul class="list-products" [hidden]="emptyList">
   <li class="title">
     <span class="name">Produto</span>
     <span class="quantity">Quantidade</span>
     <span class="remove-product">Remover</span>
   </li>
+
   <app-product *ngFor="let product of products">
+    <input type="checkbox" id="check" name="check" (click)="clickItem(product.id)">
+    <label for="checkbox"></label>
+
     <span class="name">{{product.name}}</span>
     <span class="quantity">{{product.quantity}}</span>
-    <span class="remove-product" (click)="removeProduct(product.id)">Remover</span>
+
+    <app-button name="remove" text="Remover" styleClass="remove-product" (action)="removeProduct(product.id)"></app-button>
   </app-product>
+
+  <div class="remove-group">
+    <app-button name="removeSelected" text="Remover selecionados" (action)="removeSelectedProducts()"></app-button>
+
+    <app-button name="removeAll" text="Remover todos" (action)="removeAllProducts()"></app-button>
+  </div>
 </ul>

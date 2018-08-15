@@ -1,15 +1,14 @@
 import { Component } from '@angular/core';
-
-import { ProductComponent } from '../products/product/product.component';
-import { ProductsService } from '../products/products.service';
+import { ProductComponent } from '../product/product.component';
+import { ProductsService } from '../products.service';
 
 @Component({
   selector: 'app-form-new',
-  templateUrl: './form.component.html',
-  styleUrls: ['./form.component.scss']
+  templateUrl: './register.component.html',
+  styleUrls: ['./register.component.scss']
 })
 
-export class FormComponent {
+export class RegisterProductComponent {
   submitted = false;
   product: ProductComponent = new ProductComponent();
 

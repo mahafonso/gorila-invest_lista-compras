@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
-import { AuthService } from '../core/auth.service';
+
+import { AngularFireAuth } from 'angularfire2/auth';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-form-register',
@@ -8,15 +10,29 @@ import { AuthService } from '../core/auth.service';
 })
 
 export class RegisterComponent {
-  constructor(public authService: AuthService) {}
+  errorMessage: string;
+  authenticationError = false;
+
+  constructor(private fireAuth: AngularFireAuth, private router: Router) { }
 
   onSubmitRegister(value) {
-    console.log('value', value);
-    this.authService.doRegister(value)
-      .then(res => {
-        console.log(res);
-      }, err => {
-        console.log(err);
+    this.fireAuth.auth.createUserWithEmailAndPassword(value.email, value.password)
+      .then(user => {
+        localStorage.setItem('currentUserId', this.fireAuth.auth.currentUser.uid);
+
+        this.authenticationError = false;
+
+        this.router.navigate(['list']);
+      }).catch(error => {
+        this.authenticationError = true;
+
+        if (error.code.indexOf('email-already-in-use') >= 0) {
+          this.errorMessage = 'E-mail já cadastrado!';
+        } else if (error.code.indexOf('invalid-email') >= 0) {
+          this.errorMessage = 'E-mail inválido!';
+        } else if (error.code.indexOf('weak-password') >= 0) {
+          this.errorMessage = 'Senha deve ter no mínimo 6 caracteres!';
+        }
       });
   }
 }

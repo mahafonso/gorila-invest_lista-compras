@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 
 import { ProductsService } from '../products.service';
-import { ProductComponent } from '../product/product.component';
 
 @Component({
   selector: 'app-list-product',
@@ -12,13 +11,25 @@ import { ProductComponent } from '../product/product.component';
 export class ListComponent {
   productsTemp = [];
   products = [];
+  productsIdRemove = [];
+  emptyList = true;
 
   constructor(public serviceProduct: ProductsService) {
     this.listProducts();
   }
 
+  clickItem(id) {
+    this.productsIdRemove.push(id);
+  }
+
   listProducts() {
     this.serviceProduct.listProducts().valueChanges().subscribe(data => {
+      if (data.length > 0) {
+        this.emptyList = false;
+      } else {
+        this.emptyList = true;
+      }
+
       this.productsTemp = data;
 
       this.serviceProduct.listProducts().snapshotChanges().subscribe(dataId => {
@@ -34,6 +45,18 @@ export class ListComponent {
   removeProduct(id) {
     this.serviceProduct.removeProduct(id).then(() => {
       this.listProducts();
+    });
+  }
+
+  removeSelectedProducts() {
+    this.productsIdRemove.forEach(item => {
+      this.removeProduct(item);
+    });
+  }
+
+  removeAllProducts() {
+    this.products.forEach(item => {
+      this.removeProduct(item.id);
     });
   }
 }
