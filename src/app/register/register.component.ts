@@ -5,10 +5,7 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-form-register',
   templateUrl: './register.component.html',
-  styleUrls: [
-    './register.component.scss',
-    '../form/form.component.scss'
-  ]
+  styleUrls: ['../form/form.component.scss']
 })
 
 export class RegisterComponent {

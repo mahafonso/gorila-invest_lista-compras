@@ -6,10 +6,7 @@ import { ProductsService } from '../products.service';
 @Component({
   selector: 'app-form-new',
   templateUrl: './register.component.html',
-  styleUrls: [
-    './register.component.scss',
-    '../../form/form.component.scss'
-  ]
+  styleUrls: ['../../form/form.component.scss']
 })
 
 export class RegisterProductComponent {
