@@ -15,6 +15,8 @@ export class FormComponent {
   @Input() title: string;
   @Input() linkRouter: string;
   @Input() textRouter: string;
+  @Input() emailText: string;
+  @Input() passwordText: string;
   errorMessage = '';
   authenticationError = false;
 
