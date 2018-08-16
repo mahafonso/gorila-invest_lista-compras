@@ -26,6 +26,14 @@
 
   input[type=number]::-webkit-inner-spin-button { opacity: 1; }
 
+  .router-link {
+    display: block;
+    font-size: 11px;
+    margin-top: 15px;
+
+    a { text-decoration: underline; }
+  }
+
   .error-msg {
     background: #f2dede;
     border: 1px solid #f0d8d9;

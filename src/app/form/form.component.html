@@ -1,0 +1,25 @@
+<form [id]="id" class="form {{styleClass}}" #userForm="ngForm" (ngSubmit)="onSubmitForm(userForm.value)">
+  <span class="title">{{title}}</span>
+
+  <div class="form-group">
+    <label for="email" class="label">E-mail:</label>
+    <input type="text" id="email" name="email" required class="input" [(ngModel)]="emailText" #email="ngModel">
+
+    <div class="error-msg" [hidden]="email.valid || email.pristine || submitted">Digite um e-mail</div>
+  </div>
+
+  <div class="form-group">
+    <label for="password" class="label">Senha:</label>
+    <input type="password" id="password" name="password" required class="input" [(ngModel)]="passwordText" #password="ngModel">
+
+    <div class="error-msg" [hidden]="password.valid || password.pristine || submitted">Digite a senha</div>
+  </div>
+
+  <div class="error-msg error-msg-authentication" [hidden]="!authenticationError">{{errorMessage}}</div>
+
+  <app-button name="submit" text="Entrar" type="submit" [disabled]="!userForm.form.valid"></app-button>
+
+  <span class="router-link">{{textRouter}}
+    <a href="/" title="{{textRouter}} aqui" [routerLink]="linkRouter">aqui</a>
+  </span>
+</form>

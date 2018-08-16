@@ -3,11 +3,7 @@ import { AngularFirestore } from 'angularfire2/firestore';
 
 @Injectable()
 export class ProductsService {
-  // currentUserId;
-
-  constructor(private db: AngularFirestore) {
-    // this.currentUserId = localStorage.getItem('currentUserId');
-  }
+  constructor(private db: AngularFirestore) {}
 
   listProducts() {
     return this.db.collection('/products', ref => ref.where('userId', '==', localStorage.getItem('currentUserId')));

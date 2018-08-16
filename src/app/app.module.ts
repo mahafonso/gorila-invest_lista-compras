@@ -5,6 +5,7 @@ import { RouterModule } from '@angular/router';
 import { rootRouterConfig } from './app.routes';
 
 import { UserResolver } from './user/user.resolver';
+import { AuthenticationService } from './authentication.service';
 
 import { AngularFireModule } from 'angularfire2';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
@@ -43,6 +44,7 @@ import { PageNotFoundComponent } from './not-found.component';
     FormModule
   ],
   providers: [
+    AuthenticationService,
     UserResolver
   ],
   bootstrap: [AppComponent]
